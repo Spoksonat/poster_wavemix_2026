@@ -1,0 +1,72 @@
+\documentclass[25pt, a0paper, portrait, margin=1cm, innermargin=0.5cm, colspace=1cm, subcolspace=0.5cm]{tikzposter}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage[style=phys, backend=biber, maxbibnames=5]{biblatex}
+\usepackage{hyperref}
+
+\addbibresource{bibliography/references.bib}
+
+% ---- Theme ----
+\usetheme{Default}
+\usecolorstyle{Default}
+
+\title{\parbox{\linewidth}{\centering Poster Title: A Study on \dots}}
+\author{Manuel F. S\'anchez-Alarc\'on\textsuperscript{1,2} and Collaborator\textsuperscript{1}}
+\institute{\textsuperscript{1}Department of Chemistry, University of Trieste \quad \textsuperscript{2}Laboratorio TASC, CNR-IOM}
+
+% ---- Block styling ----
+\setlength{\parskip}{0.5em}
+
+\begin{document}
+
+\maketitle
+
+\begin{columns}
+  \column{0.5}
+  \block{Introduction}{
+    This poster presents our recent work on \dots
+  }
+
+  \block{Methods}{
+    The experiments were carried out using \dots
+    \begin{align}
+      E(t) = E_0 \cos(\omega t + \phi)
+    \end{align}
+  }
+
+  \block{Results}{
+    \begin{figure}
+      \centering
+      \includegraphics[width=0.8\linewidth]{figures/placeholder}
+      \caption{Main experimental results.}
+    \end{figure}
+  }
+
+  \column{0.5}
+  \block{Discussion}{
+    The observed signals indicate \dots
+  }
+
+  \block{Conclusions}{
+    \begin{itemize}
+      \item Key finding one.
+      \item Key finding two.
+      \item Implications for future work.
+    \end{itemize}
+  }
+
+  \block{Acknowledgements}{
+    We thank \dots for financial support.
+  }
+
+  \block{References}{
+    \printbibliography[heading=none]
+  }
+\end{columns}
+
+\end{document}
