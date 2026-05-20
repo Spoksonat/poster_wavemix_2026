@@ -19,6 +19,7 @@
 *.maintitle
 *.out
 *.pdf
+!poster.pdf
 *.ps
 *.ptc
 *.run.xml
