@@ -42,7 +42,7 @@
   \begin{minipage}[c]{0.68\linewidth}
     \raggedright
     \color{titlefgcolor}%
-    {\bfseries\Huge\scshape\@title\par}%
+    {\bfseries\LARGE\scshape\@title\par}%
     \vspace*{0.8em}%
     {\Large\@author\par}%
     \vspace*{0.5em}%
@@ -70,7 +70,7 @@
 \begin{columns}
   \column{0.5}
   \block{Introduction}{
-    Chirality is central to biochemistry and drug design~\cite{Chergui2016}.
+    Chirality is central to chemistry and biochemistry and drug design~\cite{Chergui2016}.
     X-ray sources now extend chiroptical spectroscopy to core excitations, where resonant X-ray absorption (XAS) combines site specificity with strongly enhanced circular dichroism (XNCD)~\cite{Tanaka2005}.
     We address the need for theoretical assignments by propagating the time-dependent Schr\"odinger equation under an explicit pulse to compute XAS and XNCD in molecules with WaveT~\cite{Monti2023}, enabling interpretation of X-ray chiroptical spectra and ground- and valence excited-state pump--probe simulations~\cite{Sanchez2026}. 
   }
@@ -86,7 +86,7 @@
 
     \vspace{0.4em}
     \textbf{State-space expansion:}
-    $\ket{\Psi(t)}$ is expanded in TDDFT eigenstates of $\hat{H}_0$.
+    $\ket{\Psi(t)}$ is expanded in TDDFT \cite{AMS2025} eigenstates of $\hat{H}_0$.
     For ground-state (GS) spectra (core--valence separation, CVS):
     \begin{align}\label{eq:exp_core}
       \ket{\Psi(t)} = C_0(t)\ket{0} + \sum_{\lambda_c = 1}^{N_c}C_{\lambda_c}(t)\ket{\lambda_c}.
@@ -99,69 +99,69 @@
 
     \vspace{0.4em}
     \textbf{Spectra (linear response):}
-    With $\Delta\mu_q(t)=\mu_q(t)-\mu_q(0)$, $\Delta m_q(t)=m_q(t)-m_q(0)$ the time-dependent induced dipole moment and magnetic moment, along axis $q$, and $F_n^0(\omega)$ the Fourier transform of the field along axis $n$, the isotropic absorption and circular dichroism spectra are
+    With $\Delta\mu_q(t)=\mu_q(t)-\mu_q(0)$, $\Delta m_q(t)=m_q(t)-m_q(0)$ the time-dependent induced dipole moment and magnetic moment, along direction $q$, and $F_n^0(\omega)$ the Fourier transform of the field along direction $n$, the isotropic XAS and XNCD spectra are
     \begin{equation}
     \begin{gathered}
-      P^A(\omega) = \frac{1}{3}\sum_{n \in \{x,y,z\}} P^A_{nn}(\omega),
+      P^{\mathrm{XAS}}(\omega) = \frac{1}{3}\sum_{n \in \{x,y,z\}} P^{\mathrm{XAS}}_{nn}(\omega),
       \quad
-      P^{\mathrm{CD}}(\omega) = \frac{1}{3}\sum_{n \in \{x,y,z\}} P^{\mathrm{CD}}_{nn}(\omega), \\[0.4em]
-      P^A_{nq}(\omega) = \frac{1}{2\pi F_n^0(\omega)}\int_0^\infty \Delta\mu_q(t)\,e^{i(\omega + i\Gamma)t}\,\dd t,
-      \quad
-      P^{\mathrm{CD}}_{nq}(\omega) = \frac{i}{2\pi \omega F_n^0(\omega)}\int_0^\infty \Delta m_q(t)\,e^{i(\omega + i\Gamma)t}\,\dd t,
+      P^{\mathrm{XNCD}}(\omega) = \frac{1}{3}\sum_{n \in \{x,y,z\}} P^{\mathrm{XNCD}}_{nn}(\omega), \\
     \end{gathered}
     \end{equation}
+    \begin{align}
+      \begin{split}
+      P^{\mathrm{XAS}}_{nq}(\omega) &= \frac{1}{2\pi F_n^0(\omega)}\int_0^\infty \Delta\mu_q(t)\,e^{i(\omega + i\Gamma)t}\,\dd t,
+      \\
+      P^{\mathrm{XNCD}}_{nq}(\omega) &= \frac{i}{2\pi \omega F_n^0(\omega)}\int_0^\infty \Delta m_q(t)\,e^{i(\omega + i\Gamma)t}\,\dd t,
+      \end{split}
+    \end{align}
+
     where $\Gamma$ is a damping parameter (average excited-state lifetime).
 
     \vspace{0.4em}
     \textbf{Simulation pipeline:}
 
     \centering
-    \includegraphics[width=0.8\linewidth]{figures/pipeline_gs.png}
+    \includegraphics[width=\linewidth]{figures/pipeline_gs.png}
     \captionof{figure}{Pipeline for the computation of ground-state XAS and XNCD in molecules.}
     \label{fig:pipeline_gs}
     \centering
-    \includegraphics[width=0.8\linewidth]{figures/pipeline_es.png}
+    \includegraphics[width=\linewidth]{figures/pipeline_es.png}
     \captionof{figure}{Pipeline for the computation of excited-state XAS and XNCD in molecules.}
     \label{fig:pipeline_es}  
   }
 
   \block{Acknowledgements}{
-    We thank \dots for financial support.
+    Funding was provided by the European Research Council (ERC) through the CHIRAX project. Computational and institutional support from the University of Trieste and Elettra Sincrotrone Trieste is gratefully acknowledged.
   }
 
   \column{0.5}
 
   \block{Computational Details}{
-    \textbf{System and theory:}
-    (R)-methyloxirane; geometry from Andersen \textit{et al.}~\cite{Andersen2022} (reference for comparison).
-    Ground state TDDFT simulations: DFT with ADF/AMS, CAM-B3LYP.
+    \textbf{System and theory.}
+    (R)-methyloxirane (geometry from Andersen \textit{et al.}~\cite{Andersen2022}, comparison reference); ground-state TDDFT with ADF/AMS, CAM-B3LYP.
 
-    \vspace{0.3em}
-    \textbf{Basis sets (BS1--BS4):}
-    C K-edge and valence results were benchmarked to choose an efficient, converged setup:
-    BS1: C,O augmented TZP; H TZP.
-    BS2: C QZP+1 diffuse; O,H TZP.
-    BS3: C,O QZP+1 diffuse; H DZP.
-    BS4: C,O QZP+1 diffuse; H TZP.
+    \vspace{0.25em}
+    \textbf{Basis sets (BS1--BS4), benchmarked at C K-edge and valence:}
+    BS1: C,O augmented TZP, H TZP;
+    BS2: C QZP+1 diffuse, O/H TZP;
+    BS3: C,O QZP+1 diffuse, H DZP;
+    BS4: C,O QZP+1 diffuse, H TZP.
 
-    \vspace{0.3em}
-    \textbf{Core and valence states:}
-    Core TDDFT under CVS (60 states retained).
-    Valence TDDFT without orbital freezing (60 states retained).
-    Real-time dynamics at the C K-edge: 17 core states and 60 valence states; core manifold limited to excitations below the C $1s$ ionization threshold.
-
-    \vspace{0.3em}
-    \textbf{Propagation:}
-    97~fs trajectories with time step $\delta t = 0.12$~as, field intensity $I = 10^{4}$~W\,cm$^{-2}$, $\omega_c = 278$~eV (C K-edge XAS/XNCD), pulse FWHM 1~fs, $\tau = 1/\Gamma = 200$~a.u.
+    \vspace{0.25em}
+    \textbf{States and propagation.}
+    Core TDDFT (CVS, 60 states); valence TDDFT (no orbital freezing, 60 states).
+    C K-edge dynamics: 17 core + 60 valence states; core manifold below the C $1s$ ionization threshold.
+    97~fs trajectories, $\delta t = 0.12$~as, $I = 10^{4}$~W\,cm$^{-2}$, $\omega_c = 278$~eV, pulse FWHM 1~fs, $\tau = 1/\Gamma = 200$~a.u.
   }
 
   \block{Results and Discussion}{
     \noindent
-    \begin{minipage}[t]{0.65\linewidth}
+    \begin{minipage}[t]{0.71\linewidth}
+      \vspace*{0pt}%
       \centering
       \includegraphics[width=\linewidth]{figures/xas_xcd_gs_codiff_lg_exp_cc.png}
       \captionsetup{width=\linewidth}
-      \captionof{figure}{Experimental vs.\ computed ground-state XAS and XNCD for (R)-methyloxirane. Couple-Cluster data was obtained from Andersen \textit{et al.}~\cite{Andersen2022}, while experimental data was obtained from \cite{piancastelli2007,turchini2004}.}
+      \captionof{figure}{Experimental vs.\ computed ground-state XAS and XNCD for \textbf{C K-edge} of (R)-methyloxirane. Coupled-Cluster data was obtained from Andersen \textit{et al.}~\cite{Andersen2022}, while experimental data was obtained from \cite{piancastelli2007,turchini2004}. A rigid shift of 10.6~eV was applied to WaveT results to align with experiment.}
       \label{fig:xas_xcd_gs_codiff_lg_exp_cc}
 
       \vspace{0.6em}
@@ -171,37 +171,47 @@
     \end{minipage}%
     \hspace{0.03\linewidth}%
     \begin{minipage}[t]{0.25\linewidth}
+      \vspace*{8em}%
+      \centering
+      \raisebox{0.1em}[0pt][0pt]{%
+        \includegraphics[width=\linewidth]{figures/MethOx_Geom1_Coriani.png}%
+      }%
+      \captionsetup{width=\linewidth}
+      \captionof{figure}{Geometry of (R)-methyloxirane from Andersen \textit{et al.}~\cite{Andersen2022}.}
+      \label{fig:methoxirane_geom}
+
+      \vspace{0.6em}
       \centering
       \footnotesize
       \begin{tabular}{@{}lc@{}}
         \toprule
         Peak & Composition\\
         \midrule
-        $A$ & \begin{tabular}{@{}r@{\quad}l@{}}
+        A & \begin{tabular}{@{}r@{\quad}l@{}}
                 71\%: & 1S (1C) $\rightarrow$ LUMO \\
                 13\%: & 1S (1C) $\rightarrow$ LUMO \\
               \end{tabular} \\
-        $B$ & \begin{tabular}{@{}r@{\quad}l@{}}
+        B & \begin{tabular}{@{}r@{\quad}l@{}}
                 34\%: & 1S (1C) $\rightarrow$ LUMO+3 \\
                 30\%: & 1S (1C) $\rightarrow$ LUMO+1 \\
               \end{tabular} \\
-        $C_1$ & \begin{tabular}{@{}r@{\quad}l@{}}
+        C$_1$ & \begin{tabular}{@{}r@{\quad}l@{}}
                 26\%: & 1S (3C) $\rightarrow$ LUMO+3 \\
                 25\%: & 1S (3C) $\rightarrow$ LUMO \\
               \end{tabular} \\
-        $C_2$ & \begin{tabular}{@{}r@{\quad}l@{}}
+        C$_2$ & \begin{tabular}{@{}r@{\quad}l@{}}
                 35\%: & 1S (3C) $\rightarrow$ LUMO \\
                 19\%: & 1S (3C) $\rightarrow$ LUMO+1 \\
               \end{tabular} \\
-        $D$ & \begin{tabular}{@{}r@{\quad}l@{}}
+        D & \begin{tabular}{@{}r@{\quad}l@{}}
                 35\%: & 1S (3C) $\rightarrow$ LUMO \\
                 19\%: & 1S (3C) $\rightarrow$ LUMO+1 \\
               \end{tabular} \\
-        $E$ & \begin{tabular}{@{}r@{\quad}l@{}}
+        E & \begin{tabular}{@{}r@{\quad}l@{}}
                 25\%: & 1S (2C) $\rightarrow$ LUMO+14 \\
                 18\%: & 1S (2C) $\rightarrow$ LUMO+3 \\
               \end{tabular} \\
-        $F$ & \begin{tabular}{@{}r@{\quad}l@{}}
+        F & \begin{tabular}{@{}r@{\quad}l@{}}
                 26\%: & 1S (2C) $\rightarrow$ LUMO+3 \\
                 25\%: & 1S (2C) $\rightarrow$ LUMO+2 \\
               \end{tabular} \\
@@ -213,16 +223,17 @@
     \end{minipage}
 
     \centering
-    \includegraphics[width=0.57\linewidth]{figures/xcd_es_vcsame_lg_vg.png}
+    \includegraphics[width=0.65\linewidth]{figures/xcd_es_vcsame_lg_vg.png}
     \captionof{figure}{Basis set convergence of computed first-excited-state XNCD for carbon K-edge of (R)-methyloxirane. Core and valence calculations used to obtain the excited-state XNCD share the same basis set.}
     \label{fig:xcd_es_vcsame_lg_vg}
   }
 
   \block{Conclusions}{
     \begin{itemize}
-      \item WaveT is a general framework for molecular XAS and XNCD, including excited-state spectra and prospective solvent effects (perturbative matrix method or COSMO).
+      \item WaveT is a general framework for molecular XAS and XNCD, including ES spectra.
       \item For (R)-methyloxirane, WaveT ground-state XAS and XNCD reproduce experiment and agree with coupled-cluster benchmarks.
       \item Ground- and excited-state core transitions are assigned unambiguously.
+      \item Ongoing work for including solvent effects (PMM \cite{Amadei2009} and COSMO).
     \end{itemize}
   }
 
