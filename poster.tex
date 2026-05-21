@@ -39,7 +39,7 @@
 \def\title#1{\gdef\@title{#1}}
 \renewcommand{\TP@maketitle}{%
   \noindent
-  \begin{minipage}[c]{0.68\linewidth}
+  \begin{minipage}[c]{0.66\linewidth}
     \raggedright
     \color{titlefgcolor}%
     {\bfseries\LARGE\scshape\@title\par}%
@@ -48,16 +48,17 @@
     \vspace*{0.5em}%
     {\large\@institute}%
   \end{minipage}%
-  \begin{minipage}[c]{0.30\linewidth}
+  \begin{minipage}[c]{0.32\linewidth}
     \centering
-    \includegraphics[height=6.5cm]{figures/units_logo.jpeg}\hspace{1.5em}%
-    \includegraphics[height=6.5cm]{figures/chirax_color.png}%
+    \includegraphics[height=5.5cm]{figures/units_logo.jpeg}\hspace{0.7em}%
+    \includegraphics[height=7cm]{figures/elettra_logo.png}\hspace{0.7em}%
+    \includegraphics[height=5.5cm]{figures/chirax_color.png}%
   \end{minipage}%
 }
 \makeatother
 
 \title{Simulating Photoinduced Electron Dynamics for X-ray Absorption Spectroscopy and X-ray Natural Circular Dichroism in Molecules}
-\author{\textbf{Manuel Fernando S\'anchez Alarc\'on}\textsuperscript{1,2}, Emanuele Coccia\textsuperscript{3}, and Majed Chergui\textsuperscript{2,4}}
+\author{\textbf{Manuel F. S\'anchez Alarc\'on}\textsuperscript{1,2}, Giulia Dall'Osto\textsuperscript{2} ,Emanuele Coccia\textsuperscript{3}, and Majed Chergui\textsuperscript{2,4}}
 \institute{\textsuperscript{1}Dipartimento di Fisica, University of Trieste, Italy \quad \textsuperscript{2}Elettra Sincrotrone, Trieste, Italy \quad \textsuperscript{3}Dipartimento di Scienze Chimiche e Farmaceutiche, University of Trieste, Italy \quad \textsuperscript{4}École Polytechnique Fédérale de Lausanne, Switzerland}
 
 % ---- Block styling ----
@@ -70,9 +71,10 @@
 \begin{columns}
   \column{0.5}
   \block{Introduction}{
-    Chirality is central to chemistry and biochemistry and drug design~\cite{Chergui2016}.
-    X-ray sources now extend chiroptical spectroscopy to core excitations, where resonant X-ray absorption (XAS) combines site specificity with strongly enhanced circular dichroism (XNCD)~\cite{Tanaka2005}.
-    We address the need for theoretical assignments by propagating the time-dependent Schr\"odinger equation under an explicit pulse to compute XAS and XNCD in molecules with WaveT~\cite{Monti2023}, enabling interpretation of X-ray chiroptical spectra and ground- and valence excited-state pump--probe simulations~\cite{Sanchez2026}. 
+    Chirality is central to chemistry, biochemistry, and drug design~\cite{Chergui2016}.
+    X-ray sources now extend chiroptical spectroscopy to core excitations, where resonant X-ray absorption (XAS) combines site specificity with potentially enhanced X-ray natural circular dichroism (XNCD)~\cite{Tanaka2005}.
+    We address the need for theoretical assignments by propagating the time-dependent Schr\"odinger equation under an explicit pulse to compute carbon K-edge XAS and XNCD of (R)-methyloxirane with WaveT~\cite{Monti2023}, enabling interpretation of X-ray chiroptical spectra and ground- and valence excited-state pump--probe simulations~\cite{Sanchez2026}.
+    (R)-methyloxirane is a prototypical chiral system with a well-defined geometry and a clear chirality axis; published experimental and theoretical data support comparison with our results~\cite{Andersen2022,piancastelli2007,turchini2004}.
   }
 
   \block{Methods}{
@@ -121,17 +123,17 @@
     \textbf{Simulation pipeline:}
 
     \centering
-    \includegraphics[width=\linewidth]{figures/pipeline_gs.png}
+    \includegraphics[width=0.9\linewidth]{figures/pipeline_gs.png}
     \captionof{figure}{Pipeline for the computation of ground-state XAS and XNCD in molecules.}
     \label{fig:pipeline_gs}
     \centering
-    \includegraphics[width=\linewidth]{figures/pipeline_es.png}
+    \includegraphics[width=0.9\linewidth]{figures/pipeline_es.png}
     \captionof{figure}{Pipeline for the computation of excited-state XAS and XNCD in molecules.}
     \label{fig:pipeline_es}  
   }
 
   \block{Acknowledgements}{
-    Funding was provided by the European Research Council (ERC) through the CHIRAX project. Computational and institutional support from the University of Trieste and Elettra Sincrotrone Trieste is gratefully acknowledged.
+    Funding was provided by the European Research Council (ERC) CHIRAX project (n° 101095012). Computational and institutional support from the University of Trieste and Elettra Sincrotrone Trieste is gratefully acknowledged.
   }
 
   \column{0.5}
@@ -161,12 +163,12 @@
       \centering
       \includegraphics[width=\linewidth]{figures/xas_xcd_gs_codiff_lg_exp_cc.png}
       \captionsetup{width=\linewidth}
-      \captionof{figure}{Experimental vs.\ computed ground-state XAS and XNCD for \textbf{C K-edge} of (R)-methyloxirane. Coupled-Cluster data was obtained from Andersen \textit{et al.}~\cite{Andersen2022}, while experimental data was obtained from \cite{piancastelli2007,turchini2004}. A rigid shift of 10.6~eV was applied to WaveT results to align with experiment.}
+      \captionof{figure}{Ground-state C K-edge XAS and XNCD of (R)-methyloxirane (experiment~\cite{piancastelli2007,turchini2004}, coupled-cluster~\cite{Andersen2022}, WaveT); WaveT results are rigidly shifted by 10.6~eV to align with experiment.}
       \label{fig:xas_xcd_gs_codiff_lg_exp_cc}
 
       \vspace{0.6em}
       \includegraphics[width=\linewidth]{figures/xcd_gs_es_codiff_lg_vg.png}
-      \captionof{figure}{Computed first-excited-state XNCD for (R)-methyloxirane.}
+      \captionof{figure}{Computed ground- and first-excited-state ($S_0 \rightarrow S_1$, 7.136 eV) XNCD for (R)-methyloxirane.}
       \label{fig:xcd_gs_es_codiff_lg_vg}
     \end{minipage}%
     \hspace{0.03\linewidth}%
@@ -232,8 +234,8 @@
     \begin{itemize}
       \item WaveT is a general framework for molecular XAS and XNCD, including ES spectra.
       \item For (R)-methyloxirane, WaveT ground-state XAS and XNCD reproduce experiment and agree with coupled-cluster benchmarks.
-      \item Ground- and excited-state core transitions are assigned unambiguously.
-      \item Ongoing work for including solvent effects (PMM \cite{Amadei2009} and COSMO).
+      \item Ground-state transitions are described and excited-states transitions were identified.
+      \item Ongoing work for the inclusion of solvent effects (PMM \cite{Amadei2009} and COSMO).
     \end{itemize}
   }
 
